@@ -29,7 +29,7 @@ const NavBar = () => {
       </ul> */}
       <div className='flex flex-row justify-between'>
       <ul className="flex flex-row items-center">
-        <li className="mr-5">
+        <li className="mr-6">
           <Link href="/" className="text-2xl font-bold font-edo">
             Gallery
           </Link>
