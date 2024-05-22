@@ -15,6 +15,7 @@ const NewHero = () => {
                    width={400}
                    height={450}
                       priority
+                      unoptimized
                 />
             </div>
             <div className='z-20 -mt-10'>
