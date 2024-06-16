@@ -1,6 +1,9 @@
 'use client'
 
-import React, { useState} from 'react'
+import React, { useState, useEffect } from 'react'
+
+// test data
+import TestAddresses from '../data/testwl.json'
 
 /* 
 <div className="mb-4">
@@ -30,16 +33,49 @@ import React, { useState} from 'react'
 const CheckerForm = () => {
 
     const [address, setAddress] = useState('');
+    const [VIPlist, setVIPList] = useState(false)
+    const [FCFSList, setFCFSList] = useState(false);
 
     const handleSubmit = async (event: any) => {
         event.preventDefault()
-        const formData = new FormData(event.target)
-        console.log('Data is ', formData)
-        console.log('Button clicked')
+        // const formData = new FormData(event.target)
+        const data = event.target.value
+        console.log('Data is ', data)
+        console.log('Button clicked with', address)
+        checkAddress(address)
     }
 
     const handleChangeAddress = async (event: any) => {
+        event.preventDefault()
         setAddress(event.target.value)
+        console.log(address)
+    }
+
+    const checkAddress = async (address: string) => {
+        // var i:number
+         let newVip = false
+         let newFc = true
+
+
+        // console.log(TestAddresses);
+        for (let i = 0; i < TestAddresses.length; i++){
+            let check = TestAddresses[i].address
+            let vip = TestAddresses[i].VIP
+            let fsfc = TestAddresses[i].FCFS
+
+            console.log(check)
+            if (address === check){
+                newVip = vip
+                newFc = fsfc
+                console.log('vip is', newVip)
+                console.log('fc list is', newFc)
+            } else {
+                console.log("address not found")
+            }
+            
+            
+        }
+        
         console.log(address)
     }
 
@@ -55,6 +91,7 @@ const CheckerForm = () => {
                 id="address"
                 type="text"
                 placeholder="Your address"
+                onChange={handleChangeAddress}
             />
             </div>
             
