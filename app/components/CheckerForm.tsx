@@ -33,50 +33,83 @@ import TestAddresses from '../data/testwl.json'
 const CheckerForm = () => {
 
     const [address, setAddress] = useState('');
-    const [VIPlist, setVIPList] = useState(false)
-    const [FCFSList, setFCFSList] = useState(false);
+    const [VIPlist, setVIPList] = useState(0)
+    const [FCFSList, setFCFSList] = useState(0);
 
     const handleSubmit = async (event: any) => {
         event.preventDefault()
         // const formData = new FormData(event.target)
-        const data = event.target.value
+        const data = await event.target.value
         console.log('Data is ', data)
         console.log('Button clicked with', address)
-        checkAddress(address)
+       
+        const vipStatus = checkAddressForVip(address)
+        const status = await checkAddress(address)
+        console.log('status is', status)
+        console.log('vip is', vipStatus)
     }
 
     const handleChangeAddress = async (event: any) => {
         event.preventDefault()
         setAddress(event.target.value)
-        console.log(address)
+        console.log("address is now", address)
+    }
+
+    const checkAddressForVip = (address: string) => {
+        let newVip = 0
+        for (let i = 0; i < TestAddresses.length; i++){
+            let check = TestAddresses[i].address
+            let vip = TestAddresses[i].VIP
+
+            console.log(check)
+            if (address === check){
+                
+                newVip = vip
+                setVIPList(vip)
+                console.log('found address')
+                console.log(VIPlist)
+                return VIPlist
+            } else {
+                console.log(address, ' is not in VIP list')
+                return 0
+                
+            }
+        }
+       
     }
 
     const checkAddress = async (address: string) => {
         // var i:number
-         let newVip = false
-         let newFc = true
+         let newVip = 0
+         let newFc = 0
 
 
         // console.log(TestAddresses);
         for (let i = 0; i < TestAddresses.length; i++){
             let check = TestAddresses[i].address
-            let vip = TestAddresses[i].VIP
+            // let vip = TestAddresses[i].VIP
             let fsfc = TestAddresses[i].FCFS
 
             console.log(check)
             if (address === check){
-                newVip = vip
+                // newVip = vip
                 newFc = fsfc
-                console.log('vip is', newVip)
-                console.log('fc list is', newFc)
+                // console.log('fc list is', newFc)
+                // setVIPList(!VIPlist)
+                fsfc = newFc
+                setFCFSList(fsfc)
+                console.log('found address')
+                console.log(FCFSList);
+                return FCFSList;  
             } else {
                 console.log("address not found")
+                return 0
             }
             
             
         }
-        
-        console.log(address)
+        return true
+        // console.log(address)
     }
 
     return(
