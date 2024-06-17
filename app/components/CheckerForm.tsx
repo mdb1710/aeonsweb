@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react'
 
 // test data
 import TestAddresses from '../data/testwl.json'
+import WLResult from './WLResult';
 
 /* 
 <div className="mb-4">
@@ -35,17 +36,25 @@ const CheckerForm = () => {
     const [address, setAddress] = useState('');
     const [VIPlist, setVIPList] = useState(0)
     const [FCFSList, setFCFSList] = useState(0);
+    const [vipActive, setVipActive] = useState(false)
+    const [firstActive, setFirstActive] = useState(false)
+
 
     const handleSubmit = async (event: any) => {
         event.preventDefault()
         // const formData = new FormData(event.target)
-        const data = await event.target.value
-        console.log('Data is ', data)
+        // const data = await event.target.value
+        // console.log('Data is ', data)
         console.log('Button clicked with', address)
        
-        const vipStatus = checkAddressForVip(address)
+        const vipStatus = await checkAddressForVip(address)
         const status = await checkAddress(address)
-        console.log('status is', status)
+        setFCFSList(status)
+        setVIPList(vipStatus)
+        if (vipStatus > 0){
+            setFirstActive(false)
+        }
+        console.log('status is', FCFSList)
         console.log('vip is', vipStatus)
     }
 
@@ -55,27 +64,29 @@ const CheckerForm = () => {
         console.log("address is now", address)
     }
 
-    const checkAddressForVip = (address: string) => {
+    const checkAddressForVip = async (address: string) => {
         let newVip = 0
         for (let i = 0; i < TestAddresses.length; i++){
             let check = TestAddresses[i].address
             let vip = TestAddresses[i].VIP
 
-            console.log(check)
+            
             if (address === check){
                 
                 newVip = vip
                 setVIPList(vip)
                 console.log('found address')
-                console.log(VIPlist)
-                return VIPlist
+                console.log('vip is ',VIPlist)
+                setVipActive(true)
+                return 1
             } else {
                 console.log(address, ' is not in VIP list')
-                return 0
+                setVipActive(false)
+                i++
                 
             }
         }
-       
+        return 0
     }
 
     const checkAddress = async (address: string) => {
@@ -90,7 +101,7 @@ const CheckerForm = () => {
             // let vip = TestAddresses[i].VIP
             let fsfc = TestAddresses[i].FCFS
 
-            console.log(check)
+            
             if (address === check){
                 // newVip = vip
                 newFc = fsfc
@@ -99,20 +110,26 @@ const CheckerForm = () => {
                 fsfc = newFc
                 setFCFSList(fsfc)
                 console.log('found address')
-                console.log(FCFSList);
-                return FCFSList;  
+                console.log('fcfs??', FCFSList);
+                setFirstActive(true);
+                return 1;  
             } else {
                 console.log("address not found")
-                return 0
+                i++
             }
             
             
         }
-        return true
-        // console.log(address)
+        
+        return 0
     }
 
+    // WL Result Display
+
+    // const VIPResult = (VIPlist: any) = 
+
     return(
+        <div className='flex flex-col justify-center items-center'>
         <div className="w-full max-w-xs mx-auto">
         <form className="px-8 pt-6 pb-8 mb-4 bg-grey-700 bg-opacity-50 rounded">
             <div className="mb-4">
@@ -138,6 +155,11 @@ const CheckerForm = () => {
             </button>
             </div>
         </form>
+    </div>
+    <span className={ VIPlist > 0 && vipActive ? `block mb-2 text-4xl text-center font-bold text-white uppercase` : `hidden`}>WORK</span>
+    <span className={ firstActive && FCFSList > 0 ? `block mb-2 text-4xl text-center font-bold text-white uppercase` : `hidden`}>Play</span>
+    <span className={ firstActive && FCFSList < 1 ? `block mb-2 text-4xl text-center font-bold text-white uppercase` : `hidden`}>Damon</span>
+    <span className='block mb-2 text-3xl text-center font-bold text-white uppercase'>Congratulations, your wallet qualifies for 1 VIP mint and 1 FCFS mint.</span>
     </div>
     )
 }
