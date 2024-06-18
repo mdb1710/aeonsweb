@@ -1,0 +1,38 @@
+[
+    {
+        "discordId": "m00re21",
+        "address": "bc1p45vrl3uezmmwkph5tuel2ty6uf94dg9ldf6hvfe49tha7ylmlyfsz4xc70",
+        "VIP": 1,
+        "FCFS": 1
+    },
+    {
+        "discordId": "ohxbrice",
+        "address": "bc1p0w6ucwq8z2ezfuage2gqvctjyyxqs2j6zn3hztmfyqv4sxellkcqlqn3yu",
+        "VIP": 0,
+        "FCFS": 1
+    },
+    {
+        "discordId": "krou.eth",
+        "address": "bc1p0v8pvywcet3xl3lfmcjq3thjffa5szkanfwrrnjdj5af7nwxpg8sgsm8ru",
+        "VIP": 1,
+        "FCFS": 1
+    },
+    {
+        "discordId": "basil_btc",
+        "address": "bc1pn0zqmth7mm8gczdtw058p09u88rtvec05hvn29dp3q68h5aewzxqls8tk8",
+        "VIP": 1,
+        "FCFS": 1
+    },
+    {
+        "discordId": "locomind",
+        "address": "bc1pu93uqyk3s8glfsayh0pzvtuwsnu6k30fxz06a2z64qkw3sfw20xqa82c6a",
+        "VIP": 1,
+        "FCFS": 1
+    },
+    {
+        "discordId": "testdiscord",
+        "address": "swvforever",
+        "VIP": 0,
+        "FCFS": 1
+    }
+]
