@@ -16,9 +16,9 @@ const RepNavBar = () => {
   }
 
   return(
-    <nav className="p-2 sm:p-6 md:flex md:justify-between md:items-center">
+    <nav className="p-2 sm:p-2 md:flex md:justify-between md:items-center">
       <div className="container mx-auto flex justify-between items-center">
-      <div className="relative h-16 w-48">
+      <div className="relative h-14 w-44">
         <Link href="/" >
           <Image 
             className=''
@@ -32,11 +32,11 @@ const RepNavBar = () => {
       <div>
             <button onClick={handleClick} className="flex flex-col justify-center items-center">
                 <span className={`bg-[#e6a40e] block transition-all duration-300 ease-out 
-                    h-0.5 w-6 rounded-sm`}></span>
+                    h-2 w-10 rounded-sm`}></span>
                 <span className={`bg-[#e6a40e] block transition-all duration-300 ease-out 
-                    h-0.5 w-6 rounded-sm my-0.5`}></span>
+                    h-2 w-10 rounded-sm my-0.5`}></span>
                 <span className={`bg-[#e6a40e] block transition-all duration-300 ease-out 
-                    h-0.5 w-6 rounded-sm`}></span>  
+                    h-2 w-10 rounded-sm`}></span>  
             </button>
 
             <div className={isOpen ? "showMenuNav" : "hideMenuNav"}>
@@ -59,22 +59,22 @@ const RepNavBar = () => {
                 </div>
                 <ul className="flex flex-col items-center justify-between min-h-[250px]">
                     <li className="border-b border-gray-400 my-8 uppercase">
-                        <Link href="/gallery" className="text-4xl font-bold text-center uppercase mx-2">
+                        <Link href="/gallery" className="text-4xl font-bold text-center uppercase mx-2" onClick={handleClick}>
                           <span>Galle<span className='text-[#e6a40e]'>ry</span></span>
                         </Link>
                     </li>
                     <li className="border-b border-gray-400 my-8 uppercase">
-                        <Link href="/wlchecker" className='text-4xl font-bold text-center text-nowrap uppercase mx-2'>
+                        <Link href="/wlchecker" className='text-4xl font-bold text-center text-nowrap uppercase mx-2' onClick={handleClick}>
                           WL Check<span className='text-[#e6a40e]'>er</span>
                         </Link>
                     </li>
                     <li className="border-b border-gray-400 my-8 uppercase">
-                        <Link href="https://twitter.com/AeonsBTC" className="text-4xl font-bold text-center uppercase mx-2">
+                        <Link href="https://twitter.com/AeonsBTC" className="text-4xl font-bold text-center uppercase mx-2" onClick={handleClick}>
                           <span>Twitt<span className='text-[#e6a40e]'>er</span></span>
                         </Link>
                     </li>
                     <li className="border-b border-gray-400 my-8 uppercase">
-                        <Link href="https://discord.gg/6KucTavSDh" className="text-4xl font-bold text-center uppercase mx-2">
+                        <Link href="https://discord.gg/6KucTavSDh" className="text-4xl font-bold text-center uppercase mx-2" onClick={handleClick}>
                           <span>Disco<span className='text-[#e6a40e]'>rd</span></span>
                         </Link>
                     </li>
