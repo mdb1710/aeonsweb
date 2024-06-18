@@ -51,11 +51,11 @@ const CheckerForm = () => {
         const status = await checkAddress(address)
         setFCFSList(status)
         setVIPList(vipStatus)
-        if (vipStatus > 0){
-            setFirstActive(false)
-        }
+        // if (vipStatus > 0){
+        //     setFirstActive(false)
+        // }
         console.log('status is', FCFSList)
-        console.log('vip is', vipStatus)
+        console.log('vip is', VIPlist)
     }
 
     const handleChangeAddress = async (event: any) => {
@@ -91,15 +91,16 @@ const CheckerForm = () => {
 
     const checkAddress = async (address: string) => {
         // var i:number
-         let newVip = 0
          let newFc = 0
 
 
         // console.log(TestAddresses);
         for (let i = 0; i < TestAddresses.length; i++){
             let check = TestAddresses[i].address
+            console.log(check)
             // let vip = TestAddresses[i].VIP
             let fsfc = TestAddresses[i].FCFS
+            console.log ('pre-check', fsfc)
 
             
             if (address === check){
@@ -107,14 +108,17 @@ const CheckerForm = () => {
                 newFc = fsfc
                 // console.log('fc list is', newFc)
                 // setVIPList(!VIPlist)
-                fsfc = newFc
-                setFCFSList(fsfc)
-                console.log('found address')
+                setFCFSList(newFc)
+                console.log('fcfs found address')
                 console.log('fcfs??', FCFSList);
-                setFirstActive(true);
+                if (vipActive){
+                    setFirstActive(false)
+                } 
+                console.log(firstActive, 'is this')
                 return 1;  
             } else {
                 console.log("address not found")
+                setFirstActive(true)
                 i++
             }
             
@@ -133,7 +137,7 @@ const CheckerForm = () => {
         <div className="w-full max-w-xs mx-auto">
         <form className="px-8 pt-6 pb-8 mb-4 bg-grey-700 bg-opacity-50 rounded">
             <div className="mb-4">
-            <label className="block mb-2 text-lg text-center font-bold text-white" htmlFor="address">
+            <label className="block mb-2 text-4xl text-center font-bold text-white" htmlFor="address">
                 Enter Your Address
             </label>
             <input
@@ -145,9 +149,9 @@ const CheckerForm = () => {
             />
             </div>
             
-            <div className="flex justify-center items-center justify-between">
+            <div className="flex justify-center items-center ">
             <button
-                className="px-4 py-2 font-bold text-white bg-[#e6a40e] rounded focus:outline-none text-center"
+                className="px-4 py-2 font-bold text-white text-3xl bg-[#e6a40e] rounded focus:outline-none text-center"
                 type="submit"
                 onClick={handleSubmit}
             >
@@ -156,10 +160,10 @@ const CheckerForm = () => {
             </div>
         </form>
     </div>
-    <span className={ VIPlist > 0 && vipActive ? `block mb-2 text-4xl text-center font-bold text-white uppercase` : `hidden`}>WORK</span>
-    <span className={ firstActive && FCFSList > 0 ? `block mb-2 text-4xl text-center font-bold text-white uppercase` : `hidden`}>Play</span>
-    <span className={ firstActive && FCFSList < 1 ? `block mb-2 text-4xl text-center font-bold text-white uppercase` : `hidden`}>Damon</span>
-    <span className='block mb-2 text-3xl text-center font-bold text-white uppercase'>Congratulations, your wallet qualifies for 1 VIP mint and 1 FCFS mint.</span>
+    <span className={ VIPlist > 0 && vipActive ? `block mb-2 text-4xl text-center font-bold text-[#e6a40e] uppercase` : `hidden`}>Congratulations, your wallet qualifies for 1 VIP mint and 1 FCFS mint.</span>
+    <span className={ FCFSList > VIPlist ? `block mb-2 text-4xl text-center font-bold text-[#ff6633] uppercase` : `hidden`}>Congratulations, your wallet qualifies for 1 FCFS mint</span>
+    <span className={ FCFSList < 1 && firstActive ? `block mb-2 text-4xl text-center font-bold text-white uppercase` : `hidden`}>Your wallet doesn't qualify for the mint. It may take up to 72 hours for the team to update your wallet if you have won it through a giveaway. If you think there's a mistake, get in touch with us through a ticket on the discord.</span>
+    
     </div>
     )
 }

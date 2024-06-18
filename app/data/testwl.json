@@ -24,9 +24,15 @@
         "FCFS": 1
     },
     {
-        "discordId": "basil_btc",
+        "discordId": "locomind",
         "address": "bc1pu93uqyk3s8glfsayh0pzvtuwsnu6k30fxz06a2z64qkw3sfw20xqa82c6a",
         "VIP": 1,
+        "FCFS": 1
+    },
+    {
+        "discordId": "testdiscord",
+        "address": "swvforever",
+        "VIP": 0,
         "FCFS": 1
     }
 ]

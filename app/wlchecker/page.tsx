@@ -6,7 +6,7 @@ import WLResult from '../components/WLResult'
 
 const Contact = () => {
     return(
-        <main className="flex h-screen flex-col items-center justify-center bg-cover bg-[url('/blackaeonsbg.png')] -my-24">
+        <main className="flex h-screen flex-col items-center justify-center bg-cover bg-[url('/blackaeonsbg.png')] -my-12">
        
             <CheckerForm />
            
