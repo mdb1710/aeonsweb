@@ -3,6 +3,8 @@ import { Inter } from "next/font/google";
 import { League_Gothic } from "next/font/google";
 import "./globals.css";
 
+import Head from "next/head";
+
 import localFont from 'next/font/local'
 
 import Nav from './components/Nav'
@@ -10,6 +12,8 @@ import NavBar from "./components/Nav";
 import MobileNav from "./components/MobileNav";
 import NewNav from "./components/NewNav";
 import RepNavBar from "./components/RepNavbar";
+import background from '../public/blackaeonsbg.png'
+import TestNavBar from "./components/TestNavbar";
 
 
 const inter = Inter({ subsets: ["latin"] });
@@ -28,6 +32,9 @@ const edo = localFont({
 export const metadata: Metadata = {
   title: "Aeons Project",
   description: "Website for Aeons Project",
+  icons: {
+    icon: '/favicon.ico'
+  }
 };
 
 export default function RootLayout({
@@ -37,8 +44,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${edo.variable} ${inter.className} ${league_gothic.className}`}>
       
+      <body className={`${edo.variable} ${inter.className} ${league_gothic.className}`}>
+
+
         <Nav />
         {children}
       </body>

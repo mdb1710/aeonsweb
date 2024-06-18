@@ -1,20 +1,23 @@
 'use client'
 
-import React, { useState } from 'react'
-import Link from 'next/link';
-import Image from 'next/image';
+import Link from "next/link";
+import Image from "next/image";
 
-const NewNav = () => {
+import { useState } from "react";
 
-    const [isOpen, setIsOpen] = useState(false);
+// width={180} height={150}
+
+const TestNavBar = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = () => {
       setIsOpen(!isOpen);
       console.log(isOpen)
   }
-  return (
-    <nav className="sticky flex flex-row justify-between max-w-5xl mx-auto px-2 py-3 sm:px-4 z-10 bg-opacity-50">
-      {/* <div className="container mx-auto flex justify-between items-center"> */}
+
+  return(
+    <nav className=" sm:px-2 sm:py-4 md:flex md:justify-between ">
+      <div className="container mx-auto flex justify-between ">
       <div className="relative h-14 w-44">
         <Link href="/" >
           <Image 
@@ -29,11 +32,11 @@ const NewNav = () => {
       <div>
             <button onClick={handleClick} className="flex flex-col justify-center items-center">
                 <span className={`bg-[#e6a40e] block transition-all duration-300 ease-out 
-                    h-2 w-10 rounded-sm`}></span>
+                    h-0.5 w-6 rounded-sm`}></span>
                 <span className={`bg-[#e6a40e] block transition-all duration-300 ease-out 
-                    h-2 w-10 rounded-sm my-0.5`}></span>
+                    h-0.5 w-6 rounded-sm my-0.5`}></span>
                 <span className={`bg-[#e6a40e] block transition-all duration-300 ease-out 
-                    h-2 w-10 rounded-sm`}></span>  
+                    h-0.5 w-6 rounded-sm`}></span>  
             </button>
 
             <div className={isOpen ? "showMenuNav" : "hideMenuNav"}>
@@ -56,22 +59,22 @@ const NewNav = () => {
                 </div>
                 <ul className="flex flex-col items-center justify-between min-h-[250px]">
                     <li className="border-b border-gray-400 my-8 uppercase">
-                        <Link href="/gallery" className="text-4xl font-bold text-center uppercase mx-2" onClick={handleClick}>
-                          <span>Galle<span className='text-[#e6a40e]'>ry</span></span>
+                        <Link href="/gallery" className="text-4xl font-bold text-center uppercase mx-2">
+                          <span>Gallelio<span className='text-[#e6a40e]'>ry</span></span>
                         </Link>
                     </li>
                     <li className="border-b border-gray-400 my-8 uppercase">
-                        <Link href="/wlchecker" className='text-4xl font-bold text-center text-nowrap uppercase mx-2' onClick={handleClick}>
+                        <Link href="/wlchecker" className='text-4xl font-bold text-center text-nowrap uppercase mx-2'>
                           WL Check<span className='text-[#e6a40e]'>er</span>
                         </Link>
                     </li>
                     <li className="border-b border-gray-400 my-8 uppercase">
-                        <Link href="https://twitter.com/AeonsBTC" className="text-4xl font-bold text-center uppercase mx-2" onClick={handleClick}>
+                        <Link href="https://twitter.com/AeonsBTC" className="text-4xl font-bold text-center uppercase mx-2">
                           <span>Twitt<span className='text-[#e6a40e]'>er</span></span>
                         </Link>
                     </li>
                     <li className="border-b border-gray-400 my-8 uppercase">
-                        <Link href="https://discord.gg/6KucTavSDh" className="text-4xl font-bold text-center uppercase mx-2" onClick={handleClick}>
+                        <Link href="https://discord.gg/6KucTavSDh" className="text-4xl font-bold text-center uppercase mx-2">
                           <span>Disco<span className='text-[#e6a40e]'>rd</span></span>
                         </Link>
                     </li>
@@ -81,7 +84,7 @@ const NewNav = () => {
             
         </div>
       </section>
-      <div className="hidden md:flex md:items-center">
+      <div className="hidden md:flex md:items-center ">
         <Link href="/gallery" className="text-4xl font-bold text-center uppercase mx-2">
             <span>Galle<span className='text-[#e6a40e]'>ry</span></span>
         </Link>
@@ -107,7 +110,7 @@ const NewNav = () => {
               />
           </Link>
       </div>
-      {/* </div> */}
+      </div>
       <style>{`
       .hideMenuNav {
         display: none;
@@ -128,7 +131,7 @@ const NewNav = () => {
       }
     `}</style>
     </nav>
-  );
-};
+  )
+}
 
-export default NewNav;
+export default TestNavBar
