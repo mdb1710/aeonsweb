@@ -39,6 +39,10 @@ const CheckerForm = () => {
     const [vipActive, setVipActive] = useState(false)
     const [firstActive, setFirstActive] = useState(false)
 
+    useEffect(() => {
+        console.log('address checked')
+    }, [vipActive, firstActive])
+
 
     const handleSubmit = async (event: any) => {
         event.preventDefault()
@@ -162,7 +166,7 @@ const CheckerForm = () => {
     </div>
     <span className={ VIPlist > 0 && vipActive ? `block mb-2 text-4xl text-center font-bold text-[#e6a40e] uppercase` : `hidden`}>Congratulations, your wallet qualifies for 1 VIP mint and 1 FCFS mint.</span>
     <span className={ FCFSList > VIPlist ? `block mb-2 text-4xl text-center font-bold text-[#ff6633] uppercase` : `hidden`}>Congratulations, your wallet qualifies for 1 FCFS mint</span>
-    <span className={ FCFSList < 1 && firstActive ? `block mb-2 text-4xl text-center font-bold text-white uppercase` : `hidden`}>Your wallet does not qualify for the mint. It may take up to 72 hours for the team to update your wallet if you have won it through a giveaway. If you think there is a mistake, get in touch with us through a ticket on the discord.</span>
+    <span className={ FCFSList < 1 && firstActive ? `block mb-2 text-2xl text-center font-bold text-white uppercase` : `hidden`}>Your wallet does not qualify for the mint. It may take up to 72 hours for the team to update your wallet if you have won it through a giveaway. If you think there is a mistake, get in touch with us through a ticket on the discord.</span>
     
     </div>
     )
